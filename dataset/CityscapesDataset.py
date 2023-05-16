@@ -1,21 +1,28 @@
-#Cityscapes dataset is used in this project
 import os
-from PIL import Image 
+from PIL import Image
 import torch
 from torch.utils.data import Dataset
+from torchvision import transforms
 import numpy as np
-
+import albumentations as A
 
 class CityscapesDataset(Dataset):
-    def __init__(self,root_dir, split, transform=None):
+    def __init__(self, split, root_dir, target_type='semantic', mode='fine', transform=None, eval=False):
         self.transform = transform
-
+        if mode == 'fine':
+            self.mode = 'gtFine'
+        
+        elif mode == 'coarse':
+            self.mode = 'gtCoarse'
+        
         self.split = split
+        self.yLabel_list = []
+        self.XImg_list = []
+        self.eval = eval
 
-        self.label_path = os.path.join(os.getcwd(), root_dir+'/gtFine'+self.split)
+        self.label_path = os.path.join(os.getcwd(), root_dir+'/'+self.mode+'/'+self.split)
         self.rgb_path = os.path.join(os.getcwd(), root_dir+'/leftImg8bit/'+self.split)
         city_list = sorted(os.listdir(self.label_path))
-
         for city in city_list:
             temp = os.listdir(self.label_path+'/'+city)
             list_items = temp.copy()
@@ -42,9 +49,15 @@ class CityscapesDataset(Dataset):
         y = Image.open(self.label_path+self.yLabel_list[index])
 
         if self.transform is not None:
+            # image = transforms.ToTensor()(image)
+            # image = transforms.Normalize(mean=(0.485, 0.456, 0.406), std=(0.229, 0.224, 0.225))(image)
             transformed=self.transform(image=np.array(image), mask=np.array(y))
             image = transformed["image"]
+            # transformed=self.transform[:-1](mask=np.array(y))
             y = transformed["mask"]
+        # image = transforms.ToTensor()(image)
+        # y = np.array(y)
+        # y = torch.from_numpy(y)
         
         y = y.type(torch.LongTensor)
     
