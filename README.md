@@ -33,12 +33,14 @@ The model chosen is an encoder decoder based architecture called U-Net. The U-Ne
 ├── dataset
 │   └── [CityscapesDataset.py](dataset/CityscapesDataset.py)
 
+- Download the cityscapesscripts folder from [here](https://github.com/mcordts/cityscapesScripts) and place the `cityscapesscripts` folder in the root folder of the repository. Please note that you will get erros if you do not do this.
 - Make sure you keep only the first 5 cities data and delete the rest. And use the cityscapesScript to reduce the label size from 30 to 19.
 - To train the model, please uncomment the `train.train_model` line (58) in the `main.py` 
 - Run the `main.py` 
 
 ### Testing the model
-
+- To test the model, download the trained model [here](https://drive.google.com/file/d/1nND3Z6z3b2cxlS8Lcu5PlDifiPDQR1C_/view?usp=sharing)
+- Place the model in the root folder with the file name `densenet169_40.pt`.
 - To test the model, comment the line 58 and uncomment the `evaluate` line (61). Make sure to have reduced the label size to 19 to avoid errors
 
 ### Running the real time segmentation 
