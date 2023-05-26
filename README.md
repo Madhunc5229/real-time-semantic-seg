@@ -27,11 +27,11 @@ The model chosen is an encoder decoder based architecture called U-Net. The U-Ne
 
 - To train the model, you would have to have the dataset downloaded. Please download the cityscapes dataset ('leftImg8bit_trainvaltest.zip ') from [here](https://www.cityscapes-dataset.com/downloads/). After downloading the dataset, please follow the following folder structure in order to train the model
 
-├── data
-│   ├── gtFine
-│   └── leftImg8bit
-├── dataset
-│   └── [CityscapesDataset.py](dataset/CityscapesDataset.py)
+├── data  
+│   ├── gtFine  
+│   └── leftImg8bit  
+├── dataset  
+│   └── [CityscapesDataset.py](dataset/CityscapesDataset.py)  
 
 - Download the cityscapesscripts folder from [here](https://github.com/mcordts/cityscapesScripts) and place the `cityscapesscripts` folder in the root folder of the repository. Please note that you will get erros if you do not do this.
 - Make sure you keep only the first 5 cities data and delete the rest. And use the cityscapesScript to reduce the label size from 30 to 19.
