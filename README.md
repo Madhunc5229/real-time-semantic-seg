@@ -48,3 +48,6 @@ The model chosen is an encoder decoder based architecture called U-Net. The U-Ne
 - After download the folder, copy the folder 'stuttgart_01' and place in the root folder.
 - Comment both train and evlauate lines and uncomment the `real_time_segmentation` line (60)
 - Run the `main.py` file
+
+### Results
+- Please follow this link to view the output of the model: [output](https://drive.google.com/file/d/10_N1CZ5ziUFmwhj7weqwYdaZjgHMAde2/view)
