@@ -51,3 +51,4 @@ The model chosen is an encoder decoder based architecture called U-Net. The U-Ne
 
 ### Results
 - Please follow this link to view the output of the model: [output](https://www.youtube.com/watch?v=7ZoiyrH4lMw)
+- https://www.youtube.com/watch?v=7ZoiyrH4lMw
